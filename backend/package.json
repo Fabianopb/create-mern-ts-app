@@ -1,0 +1,82 @@
+{
+  "name": "api-skelpi",
+  "version": "0.1.0",
+  "description": "skeleton API in Typescript",
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "pm2": "pm2 start ./dist/server.js",
+    "postinstall": "npm run build",
+    "test": "jest --forceExit",
+    "test-ci": "npm test && cat ./coverage/lcov.info | coveralls",
+    "start": "node ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthillsolutions/api-skel.git"
+  },
+  "author": "Pierre Repetto-Andipatin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anthillsolutions/api-skel/issues"
+  },
+  "homepage": "https://github.com/anthillsolutions/api-skel#readme",
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "server"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/tests/**/*.test.(ts|js)"
+    ],
+    "testEnvironment": "node",
+    "mapCoverage": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{ts,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "!**/webpack.config.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.4",
+    "@types/chai": "^4.0.1",
+    "@types/dotenv": "^4.0.0",
+    "@types/express": "^4.0.36",
+    "@types/jest": "^20.0.4",
+    "@types/node": "^8.0.13",
+    "@types/supertest": "^2.0.2",
+    "chai": "^4.1.0",
+    "coveralls": "^3.0.0",
+    "jest": "^21.2.1",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0",
+    "ts-jest": "^21.2.4",
+    "ts-loader": "^3.2.0",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.9.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "pm2": "^2.7.1"
+  }
+}

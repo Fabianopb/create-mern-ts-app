@@ -11,16 +11,6 @@
     "test-ci": "npm test && cat ./coverage/lcov.info | coveralls",
     "start": "node ./dist/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anthillsolutions/api-skel.git"
-  },
-  "author": "Pierre Repetto-Andipatin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/anthillsolutions/api-skel/issues"
-  },
-  "homepage": "https://github.com/anthillsolutions/api-skel#readme",
   "jest": {
     "globals": {
       "ts-jest": {

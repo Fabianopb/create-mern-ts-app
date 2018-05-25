@@ -11,7 +11,7 @@ const app = express();
 app.set("port", process.env.PORT || 9000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.get("/", homeController.index);
+app.get("/api", homeController.index);
 
 app.listen(app.get("port"), () => {
   console.log(("App is running at http://localhost:%d in %s mode"),

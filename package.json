@@ -4,6 +4,12 @@
   "private": true,
   "description": "",
   "scripts": {
-    "install": "sh ./scripts/install-all.sh"
+    "install": "sh ./scripts/install-all.sh",
+    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "start:backend": "cd backend && yarn start",
+    "start:frontend": "cd frontend && yarn start"
+  },
+  "dependencies": {
+    "concurrently": "^3.5.1"
   }
 }

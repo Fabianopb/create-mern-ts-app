@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import * as express from "express";
+import * as path from "path";
 
 import * as homeController from "./controllers/home.controller";
 
@@ -8,15 +9,15 @@ dotenv.config();
 
 const app = express();
 
-app.set("port", process.env.PORT || 9000);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/api", homeController.index);
 
-app.listen(app.get("port"), () => {
-  console.log(("App is running at http://localhost:%d in %s mode"),
-    app.get("port"), app.get("env"));
-  console.log("Press CTRL-C to stop\n");
+app.use(express.static(path.resolve("..", "frontend", "build")));
+
+app.get("*", (request, response) => {
+  response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
 });
+
+app.listen(process.env.PORT || 9000);
+console.log("server running");
 
 module.exports = app;

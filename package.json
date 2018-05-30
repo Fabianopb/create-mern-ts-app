@@ -5,9 +5,12 @@
   "description": "",
   "scripts": {
     "install": "sh ./scripts/install-all.sh",
+    "postinstall": "yarn build",
+    "build": "sh ./scripts/build-all.sh",
     "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
     "start:backend": "cd backend && yarn start",
-    "start:frontend": "cd frontend && yarn start"
+    "start:frontend": "cd frontend && yarn start",
+    "serve": "cd backend && node dist/server.js"
   },
   "dependencies": {
     "concurrently": "^3.5.1"

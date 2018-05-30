@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "description": "",
+  "engines": {
+    "node": "8.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "install": "sh ./scripts/install-all.sh",
     "postinstall": "yarn build",

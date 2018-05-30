@@ -5,8 +5,6 @@
   "main": "./dist/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "pm2": "pm2 start ./dist/server.js",
-    "postinstall": "npm run build",
     "test": "jest --forceExit",
     "test-ci": "npm test && cat ./coverage/lcov.info | coveralls",
     "start": "node ./dist/server.js"
@@ -61,12 +59,11 @@
     "ts-node": "^3.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
-    "webpack": "^3.9.1"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "pm2": "^2.7.1"
+    "webpack": "^3.9.1"
   }
 }

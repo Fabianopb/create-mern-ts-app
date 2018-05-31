@@ -12,6 +12,7 @@
     "postinstall": "yarn build",
     "build": "sh ./scripts/build-all.sh",
     "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "test": "sh ./scripts/test-all.sh",
     "start:backend": "cd backend && yarn start",
     "start:frontend": "cd frontend && yarn start",
     "serve": "cd backend && node dist/server.js"

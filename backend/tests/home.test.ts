@@ -1,5 +1,3 @@
-import { expect, should } from "chai";
-import {} from "jest";
 import * as request from "supertest";
 import * as app from "../server/server";
 
@@ -9,7 +7,8 @@ describe("GET /api", () => {
       .get("/api")
       .expect(200)
       .then(res => {
-        expect(res.body).have.property("message");
+        console.log(res.body);
+        expect(res.body).toEqual({message: "The backend is running!"});
       });
   });
 });

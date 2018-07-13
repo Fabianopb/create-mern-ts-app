@@ -8,15 +8,19 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "install": "sh ./scripts/install-all.sh",
+    "install": "yarn install:backend && yarn install:frontend",
+    "install:backend": "cd backend && yarn install",
+    "install:frontend": "cd frontend && yarn install",
     "postinstall": "yarn build",
-    "build": "sh ./scripts/build-all.sh",
+    "build": "yarn build:backend && yarn build:frontend",
+    "build:backend": "cd backend && yarn build",
+    "build:frontend": "cd frontend && yarn build",
     "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "start:backend": "cd backend && yarn start",
+    "start:frontend": "cd frontend && yarn start",
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
-    "start:backend": "cd backend && yarn start",
-    "start:frontend": "cd frontend && yarn start",
     "serve": "cd backend && node dist/server.js"
   },
   "dependencies": {

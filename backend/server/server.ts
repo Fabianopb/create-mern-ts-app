@@ -3,13 +3,13 @@ import * as dotenv from "dotenv";
 import * as express from "express";
 import * as path from "path";
 
-import * as homeController from "./controllers/home.controller";
+import itemsRoutes from "./routes/items";
 
 dotenv.config();
 
 const app = express();
 
-app.get("/api", homeController.index);
+app.use("/api", itemsRoutes);
 
 app.use(express.static(path.resolve("..", "frontend", "build")));
 
@@ -17,7 +17,9 @@ app.get("*", (request, response) => {
   response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
 });
 
-app.listen(process.env.PORT || 9000);
+const server = app.listen(process.env.PORT || 9000);
 console.log("server running");
 
-module.exports = app;
+export const closeServer = () => server.close();
+
+export default app;

@@ -5,33 +5,23 @@
   "main": "./dist/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "test": "jest --coverage --colors --detectOpenHandles --forceExit",
+    "test": "jest --coverage --colors",
     "start": "node ./dist/server.js"
   },
   "jest": {
     "moduleFileExtensions": [
       "ts",
-      "js",
-      "json"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "server"
+      "js"
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
     },
     "testMatch": [
-      "**/tests/**/*.test.(ts|js)"
+      "/**/*.test.ts"
     ],
-    "testEnvironment": "node",
-    "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{ts,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**",
-      "!**/coverage/**",
-      "!**/webpack.config.js"
+      "**/*.ts",
+      "!server/server.ts"
     ]
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
-var fs = require('fs');
-var nodeModules = {};
+const fs = require('fs');
+const NodemonPlugin = require('nodemon-webpack-plugin');
+
+const nodeModules = {};
 fs.readdirSync('node_modules')
   .filter(function(x) {
     return ['.bin'].indexOf(x) === -1;
@@ -27,4 +29,7 @@ module.exports = {
   },
   target: 'node',
   externals: nodeModules,
+  plugins: [
+    new NodemonPlugin()
+  ]
 };

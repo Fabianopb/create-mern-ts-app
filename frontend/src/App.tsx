@@ -10,7 +10,7 @@ class App extends React.Component {
   };
   public async componentDidMount() {
     const response = await axios.get("/api");
-    this.setState({ message: response.data.message });
+    this.setState({ message: response.data });
   }
 
   public render() {

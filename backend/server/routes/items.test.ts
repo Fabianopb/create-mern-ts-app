@@ -12,7 +12,7 @@ describe("routes/items tests", () => {
     return request(app).get("/api")
       .expect(200)
       .then((response: any) => {
-        expect(response.body).toEqual("Root route works!");
+        expect(response.body).toEqual("Root route works!!!");
       });
   });
 });

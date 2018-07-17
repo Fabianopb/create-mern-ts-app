@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import * as express from "express";
+import * as mongoose from "mongoose";
 import * as path from "path";
 
 import itemsRoutes from "./routes/items";
@@ -11,6 +12,8 @@ const app = express();
 
 app.use("/api", itemsRoutes);
 
+mongoose.connect(process.env.DB_HOST);
+
 app.use(express.static(path.resolve("..", "frontend", "build")));
 
 app.get("*", (request, response) => {
@@ -20,6 +23,9 @@ app.get("*", (request, response) => {
 const server = app.listen(process.env.PORT || 9000);
 console.log("server running");
 
-export const closeServer = () => server.close();
+export const closeServer = () => {
+  mongoose.disconnect();
+  server.close();
+};
 
 export default app;

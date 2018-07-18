@@ -12,7 +12,7 @@ const app = express();
 
 app.use("/api", itemsRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || "");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test_database");
 
 app.use(express.static(path.resolve("..", "frontend", "build")));
 

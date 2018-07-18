@@ -12,7 +12,7 @@ const app = express();
 
 app.use("/api", itemsRoutes);
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || "");
 
 app.use(express.static(path.resolve("..", "frontend", "build")));
 

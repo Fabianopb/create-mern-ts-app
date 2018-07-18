@@ -21,7 +21,6 @@ app.get("*", (request, response) => {
 });
 
 const server = app.listen(process.env.PORT || 9000);
-console.log("server running");
 
 export const closeServer = () => {
   mongoose.disconnect();

@@ -12,7 +12,7 @@ router.route("/register").get(async (request, response) => {
   return response.status(200).json("Get register works!!!");
 });
 
-router.route("/register").post(bodyParser.json(), async (request: Request, response: Response) => {
+router.route("/register").post(bodyParser.json(), (request: Request, response: Response) => {
   const user = new User();
   user.email = request.body.email;
   user.setPassword(request.body.password);

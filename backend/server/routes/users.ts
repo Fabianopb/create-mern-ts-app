@@ -12,17 +12,17 @@ router.route("/register").get(async (request, response) => {
   return response.status(200).json("Get register works!!!");
 });
 
-router.route("/register").post(bodyParser.json(), (request: Request, response: Response) => {
-  const user = new User();
-  user.email = request.body.email;
-  user.setPassword(request.body.password);
-  user.save((error) => {
-    if (error) {
-      return response.status(400).send(error);
-    }
+router.route("/register").post(bodyParser.json(), async (request: Request, response: Response) => {
+  try {
+    const user = new User();
+    user.email = request.body.email;
+    user.setPassword(request.body.password);
+    await user.save();
     const tokenSignature = user.generateJwt();
     return response.status(200).json(tokenSignature);
-  });
+  } catch (error) {
+    return response.status(400).send(error);
+  }
 });
 
 // router.route("/login")

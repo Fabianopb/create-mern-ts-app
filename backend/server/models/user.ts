@@ -39,7 +39,7 @@ class UserClass {
   }
 
   public isPasswordValid(password: string): boolean {
-    const hash = crypto.pbkdf2Sync(password, this.salt, 1000000, 512, "sha512").toString("hex");
+    const hash = crypto.pbkdf2Sync(password, this.salt, 100000, 512, "sha512").toString("hex");
     return this.hash === hash;
   }
 

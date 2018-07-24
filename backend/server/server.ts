@@ -11,7 +11,7 @@ import userRoutes from "./users/users.controller";
 
 const app = express();
 
-app.use("/api", itemsRoutes);
+app.use("/api/items", itemsRoutes);
 app.use("/api/users", userRoutes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test_database", {

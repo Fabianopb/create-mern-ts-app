@@ -4,10 +4,10 @@ import * as express from "express";
 import * as mongoose from "mongoose";
 import * as path from "path";
 
+dotenv.config();
+
 import itemsRoutes from "./routes/items";
 import userRoutes from "./routes/users";
-
-dotenv.config();
 
 const app = express();
 

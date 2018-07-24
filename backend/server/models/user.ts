@@ -51,7 +51,7 @@ class UserClass {
       _id: this._id,
       email: this.email,
       exp: Math.round(expiry.getTime() / 1000),
-    }, process.env.BEER_CELLAR_KEY);
+    }, process.env.AUTH_SHARED_SECRET);
 
     return { token, expiry };
   }

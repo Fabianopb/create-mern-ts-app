@@ -6,8 +6,8 @@ import * as path from "path";
 
 dotenv.config();
 
-import itemsRoutes from "./routes/items";
-import userRoutes from "./routes/users";
+import itemsRoutes from "./items/items.controller";
+import userRoutes from "./users/users.controller";
 
 const app = express();
 

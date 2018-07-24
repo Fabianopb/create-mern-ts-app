@@ -1,6 +1,6 @@
 import * as request from "supertest";
 import app, { closeServer } from "../server";
-import itemsRoutes from "./items";
+import itemsRoutes from "./items.controller";
 
 describe("routes/items tests", () => {
 

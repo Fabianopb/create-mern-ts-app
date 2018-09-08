@@ -1,20 +1,27 @@
-// import * as request from "supertest";
-// import app, { closeServer } from "../server";
-// import itemsRoutes from "./items.controller";
+import MongodbMemoryServer from "mongodb-memory-server";
+import * as mongoose from "mongoose";
+import * as request from "supertest";
+import app from "../app";
 
 describe("routes/items tests", () => {
 
-  // afterAll(() => {
-  //   closeServer();
-  // });
+  const mongod = new MongodbMemoryServer();
 
-  it("should fool everyone", () => { expect(true).toBeTruthy(); });
+  beforeAll(async () => {
+    const uri = await mongod.getConnectionString();
+    await mongoose.connect(uri, { useNewUrlParser: true });
+  });
 
-  // it("should get items", () => {
-  //   return request(app).get("/items")
-  //     .expect(200)
-  //     .then((response: any) => {
-  //       expect(response.body).toEqual("Root route works!!!");
-  //     });
-  // });
+  afterAll(async () => {
+    mongoose.disconnect();
+    mongod.stop();
+  });
+
+  it("should get items", () => {
+    return request(app).get("/api/items")
+      .expect(200)
+      .then((response: any) => {
+        expect(response.body).toEqual({});
+      });
+  });
 });

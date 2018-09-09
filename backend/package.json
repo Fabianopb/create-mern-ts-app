@@ -23,7 +23,8 @@
     ],
     "collectCoverageFrom": [
       "**/*.ts",
-      "!server/server.ts"
+      "!server/server.ts",
+      "!server/app.ts"
     ]
   },
   "devDependencies": {

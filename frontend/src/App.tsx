@@ -9,7 +9,7 @@ class App extends React.Component {
     message: ""
   };
   public async componentDidMount() {
-    const response = await axios.get("/api");
+    const response = await axios.get("/api/test-route");
     this.setState({ message: response.data });
   }
 

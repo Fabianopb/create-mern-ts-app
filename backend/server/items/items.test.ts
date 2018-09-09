@@ -5,7 +5,7 @@ import app from "../app";
 import User from "../users/user.model";
 import Item from "./item.model";
 
-describe("routes/items tests", () => {
+describe("/api/items tests", () => {
 
   const mongod = new MongodbMemoryServer();
   let token: string = "";

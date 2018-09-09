@@ -37,7 +37,7 @@ router.route("/register").post(bodyParser.json(), async (request, response) => {
 router.route("/login").post(bodyParser.json(), (request, response) => {
   passport.authenticate("local", (error, user) => {
     if (!user) {
-      return response.status(400).send(error.message);
+      return response.status(400).json({ error: error.message });
     }
     const tokenSignature = user.generateJwt();
     return response.status(200).json(tokenSignature);
@@ -45,12 +45,8 @@ router.route("/login").post(bodyParser.json(), (request, response) => {
 });
 
 router.route("/profile").get(authorize, async (request, response) => {
-  try {
-    const user = await User.findById(request.user._id);
-    return response.status(200).json(user);
-  } catch (error) {
-    return response.status(400).send(error);
-  }
+  const user = await User.findById(request.user._id);
+  return response.status(200).json(user);
 });
 
 export default router;

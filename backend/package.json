@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest --coverage --colors",
+    "test:watch": "jest --coverage --colors --watchAll",
     "start": "webpack --watch",
     "start:db": "sudo mongod --dbpath /data/test/ --port 27017"
   },

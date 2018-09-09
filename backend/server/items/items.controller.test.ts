@@ -3,6 +3,7 @@ import * as mongoose from "mongoose";
 import * as request from "supertest";
 import app from "../app";
 import User from "../users/user.model";
+import Item from "./item.model";
 
 describe("routes/items tests", () => {
 
@@ -23,9 +24,20 @@ describe("routes/items tests", () => {
   });
 
   afterAll(async () => {
-    User.remove({});
-    mongoose.disconnect();
-    mongod.stop();
+    await User.remove({});
+    await mongoose.disconnect();
+    await mongod.stop();
+  });
+
+  beforeEach(async () => {
+    const item = new Item();
+    item.name = "item name";
+    item.value = 1000;
+    await item.save();
+  });
+
+  afterEach(async () => {
+    await Item.remove({});
   });
 
   it("should get items", async () => {
@@ -33,6 +45,23 @@ describe("routes/items tests", () => {
       .get("/api/items")
       .set("Authorization", `Bearer ${token}`);
     expect(response.status).toBe(200);
-    expect(response.body).toEqual([]);
+    expect(response.body).toEqual([expect.objectContaining({ name: "item name", value: 1000 })]);
+  });
+
+  it("should post items", async () => {
+    const response = await request(app)
+      .post("/api/items")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ name: "new item", value: 2000 });
+    expect(response.status).toBe(200);
+    expect(response.body).toBe("Item saved!");
+  });
+
+  it("should catch errors when posting items", async () => {
+    const response = await request(app)
+      .post("/api/items")
+      .set("Authorization", `Bearer ${token}`)
+      .send({});
+    expect(response.status).toBe(400);
   });
 });

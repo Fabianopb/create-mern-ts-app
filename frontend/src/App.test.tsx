@@ -8,8 +8,11 @@ const mock = new MockAdapter(axios);
 
 mock.onGet('/api/test-route').reply(200, 'Test route works!');
 
-it('renders without crashing', async () => {
+it('renders without crashing', done => {
   const wrapper = shallow<IAppState>(<App />);
-  await (wrapper.instance() as App).componentDidMount();
-  expect(wrapper.state().message).toBe('Test route works!');
+  wrapper.find("button").simulate("click");
+  setImmediate(() => {
+    expect(wrapper.state().message).toBe('Test route works!');
+    done();
+  });
 });

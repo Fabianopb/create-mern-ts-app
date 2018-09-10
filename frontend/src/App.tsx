@@ -12,11 +12,6 @@ class App extends React.Component<{}, IAppState> {
     message: ""
   };
 
-  public async componentDidMount() {
-    const response = await axios.get("/api/test-route");
-    this.setState({ message: response.data });
-  }
-
   public render() {
     return (
       <div className="App">
@@ -30,8 +25,14 @@ class App extends React.Component<{}, IAppState> {
         <p>
           Server test response: {this.state.message}
         </p>
+        <button onClick={this.getTestData}>Get test data</button>
       </div>
     );
+  }
+
+  private getTestData = async (): Promise<void> => {
+    const response = await axios.get("/api/test-route");
+    this.setState({ message: response.data });
   }
 }
 

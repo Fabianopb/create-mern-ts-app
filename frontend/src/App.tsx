@@ -1,13 +1,17 @@
 import axios from "axios";
 import * as React from 'react';
 import './App.css';
-
 import logo from './logo.svg';
 
-class App extends React.Component {
+export interface IAppState {
+  message: string;
+}
+
+class App extends React.Component<{}, IAppState> {
   public state = {
     message: ""
   };
+
   public async componentDidMount() {
     const response = await axios.get("/api/test-route");
     this.setState({ message: response.data });

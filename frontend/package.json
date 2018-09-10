@@ -3,24 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9000",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/index.tsx",
+      "!src/registerServiceWorker.ts"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom --coverage",
+    "test:watch": "react-scripts-ts test --env=jsdom --coverage --watchAll",
+    "eject": "react-scripts-ts eject"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "2.16.0"
   },
-  "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --coverage",
-    "eject": "react-scripts-ts eject"
-  },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/enzyme": "^3.1.13",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.1.5",
     "@types/node": "^10.5.2",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
+    "axios-mock-adapter": "^1.15.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "typescript": "^2.9.2"
   }
 }

@@ -1,9 +1,15 @@
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import { shallow } from 'enzyme';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
+import App, { IAppState } from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+const mock = new MockAdapter(axios);
+
+mock.onGet('/api/test-route').reply(200, 'Test route works!');
+
+it('renders without crashing', async () => {
+  const wrapper = shallow<IAppState>(<App />);
+  await (wrapper.instance() as App).componentDidMount();
+  expect(wrapper.state().message).toBe('Test route works!');
 });

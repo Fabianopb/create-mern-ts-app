@@ -16,6 +16,7 @@
     "build:backend": "cd backend && yarn build",
     "build:frontend": "cd frontend && yarn build",
     "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "start:db": "sudo mongod --dbpath /data/test/ --port 27017",
     "start:backend": "cd backend && yarn start",
     "start:frontend": "cd frontend && yarn start",
     "test": "yarn test:backend && yarn test:frontend",

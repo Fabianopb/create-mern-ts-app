@@ -18,8 +18,27 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.App-private {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-login {
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, button {
+  margin: 8px;
+  width: 300px;
+}
+
+.App-error {
+  margin-top: 8px;
+  color: darkred;
 }
 
 @keyframes App-logo-spin {

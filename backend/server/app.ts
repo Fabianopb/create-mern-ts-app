@@ -15,10 +15,6 @@ app.use("/api/users", userRoutes);
 
 app.use(express.static(path.resolve("..", "frontend", "build")));
 
-app.get("/api/test-route", (request, response) => {
-  return response.status(200).json("Test route works!");
-});
-
 app.get("*", (request, response) => {
   response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
 });

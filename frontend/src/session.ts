@@ -9,6 +9,13 @@ export const clearSession = (): void => {
 };
 
 export const isSessionValid = (): boolean => {
-  return true;
-  // return moment(localStorage.getItem('expiry') as string).isAfter(moment());
+  const expiry = localStorage.getItem('expiry');
+  if (expiry) {
+    return +new Date(expiry) > +new Date();
+  }
+  return false;
 };
+
+export const getAuthHeaders = () => ({
+  Authorization: `Bearer ${localStorage.getItem('token')}`
+});

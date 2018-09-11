@@ -4,20 +4,27 @@ import './App.css';
 import * as session from './session';
 import logo from './logo.svg';
 
-export interface IAppState {
+export interface AppState {
   email: string;
   password: string;
+  isRequesting: boolean;
   isLoggedIn: boolean;
-  response: string;
+  data: Item[];
   error: string;
 }
 
-class App extends React.Component<{}, IAppState> {
+interface Item {
+  name: string;
+  value: number;
+}
+
+class App extends React.Component<{}, AppState> {
   public state = {
     email: "",
     password: "",
+    isRequesting: false,
     isLoggedIn: false,
-    response: "",
+    data: [],
     error: ""
   };
 
@@ -32,28 +39,34 @@ class App extends React.Component<{}, IAppState> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <div className="App-error">{this.state.error}</div>
         {this.state.isLoggedIn ? (
           <div className="App-private">
-            <p>
-              Server test response: {this.state.response}
-            </p>
-            <button onClick={this.getTestData}>Get test data</button>
-            <button onClick={this.logout}>Log out</button>
+            <div>
+              Server test data:
+              <ul>
+                {this.state.data.map((item: Item, index) => <li key={index}>name: {item.name} / value: {item.value}</li>)}
+              </ul>
+            </div>
+            <button disabled={this.state.isRequesting} onClick={this.getTestData}>Get test data</button>
+            <button disabled={this.state.isRequesting} onClick={this.logout}>Log out</button>
           </div>
         ) : (
           <div className="App-login">
+            (try testuser@email.com / my-password )
             <input
+              disabled={this.state.isRequesting}
               placeholder="email"
               type="text"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ email: e.target.value })}
             />
             <input
+              disabled={this.state.isRequesting}
               placeholder="password"
               type="password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ password: e.target.value })}
             />
-            <button onClick={this.handleLogin}>Log in</button>
-            <div className="App-error">{this.state.error}</div>
+            <button disabled={this.state.isRequesting} onClick={this.handleLogin}>Log in</button>
           </div>
         )}
       </div>
@@ -63,12 +76,16 @@ class App extends React.Component<{}, IAppState> {
   private handleLogin = async (): Promise<void> => {
     const { email, password } = this.state;
     try {
+      this.setState({ error: "" });
+      this.setState({ isRequesting: true });
       const response = await axios.post<{ token: string; expiry: string }>("/api/users/login", { email, password });
       const { token, expiry } = response.data;
       session.setSession(token, expiry);
       this.setState({ isLoggedIn: true });
     } catch (error) {
-      this.setState({ error: error.response.data.error });
+      this.setState({ error: "Something went wrong" });
+    } finally {
+      this.setState({ isRequesting: false });
     }
   };
 
@@ -78,8 +95,15 @@ class App extends React.Component<{}, IAppState> {
   };
 
   private getTestData = async (): Promise<void> => {
-    const response = await axios.get("/api/test-route");
-    this.setState({ response: response.data });
+    try {
+      this.setState({ error: "" });
+      const response = await axios.get<Item[]>("/api/items", { headers: session.getAuthHeaders() });
+      this.setState({ data: response.data });
+    } catch (error) {
+      this.setState({ error: "Something went wrong" });
+    } finally {
+      this.setState({ isRequesting: false });
+    }
   }
 }
 

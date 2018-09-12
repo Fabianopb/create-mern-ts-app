@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "react-frontend",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9000",
@@ -14,6 +14,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "postinstall": "yarn build",
     "test": "react-scripts-ts test --env=jsdom --coverage",
     "test:watch": "react-scripts-ts test --env=jsdom --coverage --watchAll",
     "eject": "react-scripts-ts eject"

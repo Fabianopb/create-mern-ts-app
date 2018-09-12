@@ -1,10 +1,10 @@
 {
-  "name": "api-skelpi",
+  "name": "express-backend",
   "version": "0.1.0",
-  "description": "skeleton API in Typescript",
   "main": "./dist/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "postinstall": "yarn build",
     "test": "jest --coverage --colors",
     "test:watch": "jest --coverage --colors --watchAll",
     "start": "webpack --watch"

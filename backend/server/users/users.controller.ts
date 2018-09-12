@@ -3,7 +3,6 @@ import { Router } from "express";
 import * as mongoose from "mongoose";
 import * as passport from "passport";
 import { Strategy } from "passport-local";
-import { authorize } from "../config";
 import User from "./user.model";
 
 passport.use(new Strategy({ usernameField: "email" }, async (username, password, done) => {
@@ -42,11 +41,6 @@ router.route("/login").post(bodyParser.json(), (request, response) => {
     const tokenSignature = user.generateJwt();
     return response.status(200).json(tokenSignature);
   })(request, response);
-});
-
-router.route("/profile").get(authorize, async (request, response) => {
-  const user = await User.findById(request.user._id);
-  return response.status(200).json(user);
 });
 
 export default router;

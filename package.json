@@ -7,8 +7,7 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "install:ci": "yarn install:backend && yarn install:frontend",
-    "install:all": "yarn install && yarn install:backend && yarn install:frontend",
+    "install": "yarn install:backend && yarn install:frontend",
     "install:backend": "cd backend && yarn install",
     "install:frontend": "cd frontend && yarn install",
     "build": "yarn build:backend && yarn build:frontend",

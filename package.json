@@ -1,17 +1,15 @@
 {
-  "name": "fullstack-test",
+  "name": "express-react-ts-ci",
   "version": "1.0.0",
   "private": true,
-  "description": "",
   "engines": {
     "node": "8.x",
     "yarn": "1.x"
   },
   "scripts": {
-    "install": "yarn install:backend && yarn install:frontend",
+    "install:all": "yarn install && yarn install:backend && yarn install:frontend",
     "install:backend": "cd backend && yarn install",
     "install:frontend": "cd frontend && yarn install",
-    "postinstall": "yarn build",
     "build": "yarn build:backend && yarn build:frontend",
     "build:backend": "cd backend && yarn build",
     "build:frontend": "cd frontend && yarn build",

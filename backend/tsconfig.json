@@ -9,7 +9,7 @@
     "module": "commonjs",
     "noImplicitAny": true,
     "target": "es6",
-    "outDir": "dist",
+    "outDir": "build",
     "rootDir": "server",
     "sourceMap": true,
     "baseUrl": ".",

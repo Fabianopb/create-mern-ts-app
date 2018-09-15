@@ -1,7 +1,7 @@
 {
   "name": "express-backend",
   "version": "0.1.0",
-  "main": "./dist/server.js",
+  "main": "./build/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "postinstall": "yarn build",

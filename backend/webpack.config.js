@@ -13,7 +13,7 @@ fs.readdirSync('node_modules')
 module.exports = {
   entry: './server/server.ts',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/build',
     filename: 'server.js'
   },
   resolve: {

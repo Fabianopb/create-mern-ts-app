@@ -53,7 +53,7 @@ class App extends React.Component<{}, AppState> {
           </div>
         ) : (
           <div className="App-login">
-            (try testuser@email.com / my-password )
+            (try the credentials: testuser@email.com / my-password)
             <input
               disabled={this.state.isRequesting}
               placeholder="email"

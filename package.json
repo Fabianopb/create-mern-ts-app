@@ -22,7 +22,10 @@
     "test:frontend": "cd frontend && yarn test",
     "serve": "cd backend && node dist/server.js"
   },
-  "dependencies": {
-    "concurrently": "^3.5.1"
+  "dependencies": {},
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.4.1",
+    "concurrently": "^4.0.1"
   }
 }

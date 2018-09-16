@@ -20,6 +20,7 @@
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
+    "generateSampleData": "node scripts/generateSampleData.js",
     "serve": "cd backend && node dist/server.js"
   },
   "dependencies": {},

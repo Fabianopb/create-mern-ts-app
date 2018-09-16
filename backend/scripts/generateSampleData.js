@@ -11,13 +11,15 @@ const sampleItems = [
   { name: "Table lamp", value: 5.1 }
 ];
 
+const getMessage = (error) => error.response ? error.response.data.message : error.message;
+
 const postSampleUser = async () => {
   try {
     const response = await axios.post(`${apiUrl}/users/register`, sampleUser);
     console.log(chalk.green('Sample user successfuly created'));
     return response.data.token;
   } catch (error) {
-    console.log(chalk.red(error.response.data.message));
+    console.log(chalk.red(getMessage(error)));
     process.exit(1);
   }
 }
@@ -29,7 +31,7 @@ const postSampleItems = async (token) => {
     const response = await axios.all(postItemRequests);
     console.log(chalk.green(`${response.length} item(s) successfuly created`));
   } catch (error) {
-    console.log(chalk.red(error.response.data.message));
+    console.log(chalk.red(getMessage(error)));
     process.exit(1);
   }
 }

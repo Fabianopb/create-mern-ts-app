@@ -20,13 +20,11 @@
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
-    "generateSampleData": "node scripts/generateSampleData.js",
-    "serve": "cd backend && node dist/server.js"
+    "serve": "cd backend && node dist/server.js",
+    "initialize:db": "cd backend && yarn generateSampleData"
   },
   "dependencies": {},
   "devDependencies": {
-    "axios": "^0.18.0",
-    "chalk": "^2.4.1",
     "concurrently": "^4.0.1"
   }
 }

@@ -10,6 +10,7 @@ describe("/api/items tests", () => {
   const mongod = new MongodbMemoryServer();
   let token: string = "";
 
+  // Connect to mongoose mock, create a test user and get the access token
   beforeAll(async () => {
     const uri = await mongod.getConnectionString();
     await mongoose.connect(uri, { useNewUrlParser: true });
@@ -23,12 +24,14 @@ describe("/api/items tests", () => {
     token = response.body.token;
   });
 
+  // Remove test user, disconnect and stop database
   afterAll(async () => {
     await User.remove({});
     await mongoose.disconnect();
     await mongod.stop();
   });
 
+  // Create a sample item
   beforeEach(async () => {
     const item = new Item();
     item.name = "item name";
@@ -36,6 +39,7 @@ describe("/api/items tests", () => {
     await item.save();
   });
 
+  // Remove sample items
   afterEach(async () => {
     await Item.remove({});
   });

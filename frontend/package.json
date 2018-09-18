@@ -16,8 +16,7 @@
     "build": "react-scripts-ts build",
     "postinstall": "yarn build",
     "test": "react-scripts-ts test --env=jsdom --coverage",
-    "test:watch": "react-scripts-ts test --env=jsdom --coverage --watchAll",
-    "eject": "react-scripts-ts eject"
+    "test:watch": "react-scripts-ts test --env=jsdom --coverage --watchAll"
   },
   "dependencies": {
     "axios": "^0.18.0",

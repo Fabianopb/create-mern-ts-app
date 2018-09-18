@@ -89,7 +89,7 @@ class App extends React.Component<{}, AppState> {
     }
   };
 
-  private logout = () => {
+  private logout = (): void => {
     session.clearSession();
     this.setState({ isLoggedIn: false });
   };

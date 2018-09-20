@@ -37,7 +37,7 @@ class App extends React.Component<{}, AppState> {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to React Fabiano</h1>
         </header>
         <div className="App-error">{this.state.error}</div>
         {this.state.isLoggedIn ? (

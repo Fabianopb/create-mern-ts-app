@@ -4,11 +4,10 @@
   "main": "./build/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "postinstall": "yarn build",
+    "postinstall": "yarn build & node scripts/populateDatabase.js",
     "test": "jest --coverage --colors",
     "test:watch": "jest --coverage --colors --watchAll",
-    "start": "webpack --watch",
-    "generateSampleData": "node scripts/generateSampleData.js"
+    "start": "webpack --watch"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -41,7 +40,6 @@
     "@types/passport": "^0.4.5",
     "@types/passport-local": "^1.0.33",
     "@types/supertest": "^2.0.2",
-    "axios": "^0.18.0",
     "chalk": "^2.4.1",
     "jest": "^23.4.0",
     "mongodb-memory-server": "^2.1.0",

@@ -2,6 +2,7 @@
   "name": "express-react-ts-ci",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "engines": {
     "node": "8.x",
     "yarn": "1.x"

@@ -112,3 +112,7 @@ const MyFuncComponent: React.SFC<MyComponentProps> = ({ name, callback }) => (
 ## Sharing types
 
 Just as a footnote it's very desirable to share types between your API and your frontend so both can _talk in the same language_. This could be achieved, for example, by creating a local `@type` module in the root that could be directly linked to each project via [yarn's link](https://yarnpkg.com/lang/en/docs/cli/link/).
+
+## License
+
+MIT

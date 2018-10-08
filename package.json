@@ -21,10 +21,12 @@
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
+    "coveralls": "yarn test --coverage && cat ./backend/coverage/lcov.info | coveralls",
     "serve": "cd backend && node build/server.js"
   },
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "coveralls": "^3.0.2"
   }
 }

@@ -2,3 +2,6 @@ language: node_js
 node_js: "8"
 env:
   - AUTH_SHARED_SECRET=auth-shared-secret
+script:
+- npm test
+- npm run coveralls

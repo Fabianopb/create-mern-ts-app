@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "8.x",
+    "node": ">=8",
     "yarn": "1.x"
   },
   "scripts": {

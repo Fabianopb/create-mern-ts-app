@@ -5,7 +5,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=8",
-    "yarn": ">=1.0"
+    "yarn": ">=1"
   },
   "scripts": {
     "install": "yarn install:backend && yarn install:frontend",

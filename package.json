@@ -23,7 +23,9 @@
     "test:frontend": "cd frontend && yarn test",
     "serve": "cd backend && node build/server.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^2.4.1"
+  },
   "devDependencies": {
     "concurrently": "^4.0.1"
   }

@@ -24,7 +24,8 @@
     "serve": "cd backend && node build/server.js"
   },
   "dependencies": {
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.1",
+    "fs-extra": "^7.0.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"

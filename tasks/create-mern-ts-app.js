@@ -1,4 +1,6 @@
 const chalk = require('chalk');
+const fs = require('fs-extra');
+const path = require('path');
 
 const currentNodeVersion = process.versions.node;
 const currentMajor = parseInt(currentNodeVersion.split(".")[0], 10);
@@ -23,3 +25,9 @@ if (!projectName) {
   console.log(`  ${chalk.cyan('create-mern-ts-app')} ${chalk.green('my-app')}\n`);
   process.exit(1);
 }
+
+const srcRoot = path.join(__dirname, '..');
+const destRoot = path.join(__dirname, projectName);
+
+fs.mkdirsSync(destRoot);
+fs.copySync(path.join(srcRoot, 'backend'), path.join(destRoot, 'backend'));

@@ -9,7 +9,7 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "create-mern-ts-app": "node create-mern-ts-app"
+    "create-mern-ts-app": "node create-mern-ts-app.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",

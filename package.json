@@ -9,6 +9,7 @@
     "yarn": "1.x"
   },
   "scripts": {
+    "postinstall": "node create-mern-ts-app.js",
     "create-mern-ts-app": "node create-mern-ts-app.js"
   },
   "dependencies": {

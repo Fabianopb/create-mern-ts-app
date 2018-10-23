@@ -30,4 +30,4 @@ const srcRoot = path.join(__dirname);
 const destRoot = path.join(__dirname, projectName);
 
 fs.mkdirsSync(destRoot);
-fs.copySync(path.join(srcRoot, 'backend'), path.join(destRoot, 'backend'));
+fs.copySync(path.join(srcRoot, 'template/'), path.join(destRoot));

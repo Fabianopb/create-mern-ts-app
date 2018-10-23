@@ -2,7 +2,7 @@
   "name": "create-mern-ts-app",
   "main": "create-mern-ts-app.js",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "engines": {
     "node": "8.x",

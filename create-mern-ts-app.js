@@ -26,7 +26,7 @@ if (!projectName) {
   process.exit(1);
 }
 
-const srcRoot = path.join(__dirname, '..');
+const srcRoot = path.join(__dirname);
 const destRoot = path.join(__dirname, projectName);
 
 fs.mkdirsSync(destRoot);

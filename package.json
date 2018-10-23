@@ -1,5 +1,6 @@
 {
-  "name": "express-react-ts-ci",
+  "name": "create-mern-ts-app",
+  "main": "create-mern-ts-app.js",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
@@ -8,26 +9,10 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "install": "yarn install:backend && yarn install:frontend",
-    "install:backend": "cd backend && yarn install",
-    "install:frontend": "cd frontend && yarn install",
-    "build": "yarn build:backend && yarn build:frontend",
-    "build:backend": "cd backend && yarn build",
-    "build:frontend": "cd frontend && yarn build",
-    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
-    "start:db": "sudo mongod --dbpath /data/test/ --port 27017",
-    "start:backend": "cd backend && yarn start",
-    "start:frontend": "cd frontend && yarn start",
-    "test": "yarn test:backend && yarn test:frontend",
-    "test:backend": "cd backend && yarn test",
-    "test:frontend": "cd frontend && yarn test",
-    "serve": "cd backend && node build/server.js"
+    "create-mern-ts-app": "node create-mern-ts-app"
   },
   "dependencies": {
     "chalk": "^2.4.1",
     "fs-extra": "^7.0.0"
-  },
-  "devDependencies": {
-    "concurrently": "^4.0.1"
   }
 }

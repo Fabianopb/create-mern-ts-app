@@ -29,10 +29,10 @@ if (!projectName) {
   process.exit(1);
 }
 
-const srcRoot = path.join(__dirname);
-const destRoot = path.join(__dirname, projectName);
+const srcRoot = path.join(__dirname, srcRoot, 'template/');
+const destRoot = path.resolve(projectName);
 console.log(chalk.yellow('Project will be created at:'));
 console.log(chalk.cyan(destRoot));
 
 fs.mkdirsSync(destRoot);
-fs.copySync(path.join(srcRoot, 'template/'), path.join(destRoot));
+fs.copySync(srcRoot, destRoot);

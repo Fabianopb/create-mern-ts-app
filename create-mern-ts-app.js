@@ -21,7 +21,7 @@ if (currentMajor < requiredMajor) {
   );
   process.exit(1);
 }
-console.log(chalk.green(`Node ${currentNodeVersion} found, you're good to go!`));
+console.log(chalk.green(`Node ${currentNodeVersion} found, you're good to go!\n`));
 
 if (!projectName) {
   console.log(chalk.yellow('Project name has to be specified. Try for example:'));
@@ -32,7 +32,7 @@ if (!projectName) {
 const srcRoot = path.join(__dirname, 'template/');
 const destRoot = path.resolve(projectName);
 console.log(chalk.yellow('Project will be created at:'));
-console.log(chalk.cyan(destRoot));
+console.log(chalk.cyan(destRoot + '\n'));
 
 fs.mkdirsSync(destRoot);
 fs.copySync(srcRoot, destRoot);

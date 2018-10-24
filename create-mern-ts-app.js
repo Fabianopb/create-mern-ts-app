@@ -29,7 +29,7 @@ if (!projectName) {
   process.exit(1);
 }
 
-const srcRoot = path.join(__dirname, srcRoot, 'template/');
+const srcRoot = path.join(__dirname, 'template/');
 const destRoot = path.resolve(projectName);
 console.log(chalk.yellow('Project will be created at:'));
 console.log(chalk.cyan(destRoot));

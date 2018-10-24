@@ -1,16 +1,11 @@
 {
   "name": "create-mern-ts-app",
-  "main": "create-mern-ts-app.js",
+  "bin": "./create-mern-ts-app.js",
   "version": "0.2.3",
-  "private": false,
   "license": "MIT",
   "engines": {
     "node": "8.x",
     "yarn": "1.x"
-  },
-  "scripts": {
-    "postinstall": "node create-mern-ts-app.js",
-    "create-mern-ts-app": "node create-mern-ts-app.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",

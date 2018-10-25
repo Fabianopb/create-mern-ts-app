@@ -99,7 +99,7 @@ function asyncSpawn(command, args, cwd) {
   });
 }
 
-const run = async() => {
+(async() => {
   try {
     checkNodeVersion();
     const projectName = checkProjectName();
@@ -110,6 +110,4 @@ const run = async() => {
     console.log(chalk.red(e));
     process.exit(1);
   }
-};
-
-run();
+})();

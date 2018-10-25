@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/test_database';
 const dbName = url.split('/')[url.split('/').length - 1];
 
-(async () => {
+(async() => {
   let client;
   try {
     client = await MongoClient.connect(url, { useNewUrlParser: true });
@@ -19,16 +19,16 @@ const dbName = url.split('/')[url.split('/').length - 1];
       console.log(chalk.yellow('No users or items in the database, creating sample data...'));
       const email = 'testuser@email.com';
       const password = 'my-password';
-      const salt = crypto.randomBytes(16).toString("hex");
-      const hash = crypto.pbkdf2Sync(password, salt, 100000, 512, "sha512").toString("hex");
+      const salt = crypto.randomBytes(16).toString('hex');
+      const hash = crypto.pbkdf2Sync(password, salt, 100000, 512, 'sha512').toString('hex');
       await usersCollection.save({ email, hash, salt });
       console.log(chalk.green('Sample user successfuly created!'));
       const items = [
-        { name: "Paper clip", value: 0.1 },
-        { name: "Colorful pen", value: 1.2 },
-        { name: "Notebook", value: 2.5 },
-        { name: "Soft eraser", value: 0.5 },
-        { name: "Table lamp", value: 5.1 }
+        { name: 'Paper clip', value: 0.1 },
+        { name: 'Colorful pen', value: 1.2 },
+        { name: 'Notebook', value: 2.5 },
+        { name: 'Soft eraser', value: 0.5 },
+        { name: 'Table lamp', value: 5.1 }
       ];
       await itemsCollection.insertMany(items);
       console.log(chalk.green(`${items.length} item(s) successfuly created!`));

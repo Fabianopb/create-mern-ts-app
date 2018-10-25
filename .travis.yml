@@ -7,3 +7,6 @@ services:
   - mongodb
 env:
   - AUTH_SHARED_SECRET=auth-shared-secret
+script:
+- npm test
+- npm run coveralls

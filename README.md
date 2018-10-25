@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/Fabianopb/express-react-ts-ci.svg?branch=master)](https://travis-ci.com/Fabianopb/express-react-ts-ci)
 
+[![Coverage Status](https://coveralls.io/repos/github/Fabianopb/express-react-ts-ci/badge.svg?branch=master)](https://coveralls.io/github/Fabianopb/express-react-ts-ci?branch=master)
+
 This is a starter kit for a fullstack application configured to use [Express](http://expressjs.com/) and [MongoDB](https://www.mongodb.com/) in the backend, and [React](https://reactjs.org/) in the frontend, all written in [TypeScript](https://www.typescriptlang.org/). The backend is built with [webpack](https://webpack.js.org/) (configuration inspired from [here](https://github.com/anthillsolutions/api-skel)), and the frontend was bootstraped with [create-react-app-typescript](https://github.com/wmonk/create-react-app-typescript).
 
 This starter kit includes test configuration and a couple test examples using [Jest](https://jestjs.io/), as well as minimum set up to run your tests in [Travis CI](https://travis-ci.com/) and to deploy to [Heroku](https://www.heroku.com/).

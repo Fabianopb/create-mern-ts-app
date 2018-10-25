@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const currentNodeVersion = process.versions.node;
-const currentMajor = parseInt(currentNodeVersion.split(".")[0], 10);
+const currentMajor = parseInt(currentNodeVersion.split('.')[0], 10);
 const requiredMajor = 8;
 const projectName = process.argv[2];
 

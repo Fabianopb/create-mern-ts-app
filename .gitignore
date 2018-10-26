@@ -12,7 +12,7 @@ node_modules
 # testing
 coverage
 
-#dev
+# dev
 sample-app
 
 # production

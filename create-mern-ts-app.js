@@ -84,11 +84,7 @@ function checkYarnOrNpmVersion() {
 
 function asyncSpawn(command, args, cwd) {
   return new Promise((resolve, reject) => {
-    const child = cp.spawn(
-      command,
-      [...args],
-      { cwd, stdio: 'inherit' }
-    );
+    const child = cp.spawn(command, [...args], { cwd, stdio: 'inherit' });
     child.on('close', code => {
       if (code !== 0) {
         reject(new Error('Something went wrong...'));

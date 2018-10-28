@@ -18,3 +18,11 @@ Launch both backend and frontend simply running
 ```
 $ yarn start
 ```
+
+## CI/CD
+
+The application is ready to be tested with Travis and deployed to Heroku. Read more at [Fullstack Express-React App With TypeScript](https://medium.com/@fabianopb/fullstack-express-react-app-with-typescript-5a103e19821e)
+
+## License
+
+MIT

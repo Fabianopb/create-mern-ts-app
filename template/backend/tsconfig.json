@@ -1,10 +1,4 @@
 {
-  "files": [
-    "server/server.ts"
-  ],
-  "include": [
-    "server/**/*.ts"
-  ],
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,

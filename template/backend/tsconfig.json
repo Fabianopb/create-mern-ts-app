@@ -1,16 +1,10 @@
 {
-  "files": [
-    "server/server.ts"
-  ],
-  "include": [
-    "server/**/*.ts"
-  ],
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,
     "target": "es6",
     "outDir": "build",
-    "rootDir": "server",
+    "rootDir": "./",
     "sourceMap": true,
     "baseUrl": ".",
     "moduleResolution": "node",

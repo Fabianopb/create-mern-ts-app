@@ -4,7 +4,6 @@
   "main": "./build/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "postinstall": "yarn build & node scripts/populateDatabase.js",
     "test": "jest --coverage --colors",
     "test:watch": "jest --coverage --colors --watchAll",
     "start": "webpack --watch"

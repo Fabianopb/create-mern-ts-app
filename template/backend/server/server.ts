@@ -1,11 +1,17 @@
 import * as mongoose from "mongoose";
+import populateDatabase from "../scripts/populateDatabase";
 import app from "./app";
+import User from "./users/user.model";
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test_database", {
-  useNewUrlParser: true
-});
-
+const url = process.env.MONGODB_URI || "mongodb://localhost:27017/test_database";
 const port = process.env.PORT || 9000;
 
-app.listen(port);
-console.log(`App listening on port ${port}...`);
+(async () => {
+  // Connect to the database
+  const client = await mongoose.connect(url, { useNewUrlParser: true });
+  // Populate database with sample data if it's empty
+  await populateDatabase();
+  // Start express App
+  app.listen(port);
+  console.log(`App listening on port ${port}...`);
+})();

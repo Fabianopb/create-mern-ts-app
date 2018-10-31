@@ -5,6 +5,7 @@ const cp = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
 const semver = require('semver');
+const crypto = require('crypto');
 
 function checkNodeVersion() {
   const currentNodeVersion = process.versions.node;
@@ -43,6 +44,13 @@ function createProjectTemplate(projectName) {
   console.log(chalk.cyan(destRoot + '\n'));
   fs.mkdirsSync(destRoot);
   fs.copySync(srcRoot, destRoot);
+}
+
+function generateEnvFile(projectName) {
+  const destRoot = path.resolve(projectName);
+  const envContents = fs.readFileSync(path.join(destRoot, 'backend', '.env.example'), 'utf8')
+    .replace(/auth-shared-secret/g, crypto.randomBytes(24).toString('hex'));
+  fs.writeFileSync(path.join(destRoot, 'backend', '.env'), `# This is an auto-generated file, change at your own will and risk.\n\n${envContents}`);
 }
 
 function shouldUseYarn() {
@@ -101,6 +109,7 @@ function asyncSpawn(command, args, cwd) {
     const projectName = checkProjectName();
     const useYarn = checkYarnOrNpmVersion();
     createProjectTemplate(projectName);
+    generateEnvFile(projectName);
     await asyncSpawn(useYarn ? 'yarn' : 'npm', ['install'], projectName);
   } catch (e) {
     console.log(chalk.red(e));

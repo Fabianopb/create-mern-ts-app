@@ -50,7 +50,7 @@ function generateEnvFile(projectName) {
   const destRoot = path.resolve(projectName);
   const envContents = fs.readFileSync(path.join(destRoot, 'backend', '.env.example'), 'utf8')
     .replace(/auth-shared-secret/g, crypto.randomBytes(24).toString('hex'));
-  fs.writeFileSync(path.join(destRoot, 'backend', '.env'), `# This is an auto-generated file, change at your own will and risk.\n\n${envContents}`);
+  fs.writeFileSync(path.join(destRoot, 'backend', '.env'), `# This is an auto-generated file, change at your own will and risk.`);
 }
 
 function shouldUseYarn() {

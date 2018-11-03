@@ -1,19 +1,21 @@
-import * as crypto from "crypto";
-import * as jwt from "jsonwebtoken";
-import * as mongoose from "mongoose";
+import { pbkdf2Sync, randomBytes } from "crypto";
+import { sign } from "jsonwebtoken";
+import { Document, model, Schema } from "mongoose";
+import { SchemaDef } from "../../types";
 
-// Declare the model interface
-interface User extends mongoose.Document {
+interface User {
   email: string;
   hash: string;
   salt: string;
+}
+// Declare the model interface
+interface UserDoc extends User, Document {
   setPassword(password: string): void;
   isPasswordValid(password: string): boolean;
   generateJwt(): { token: string; expiry: Date };
 }
 
-// Declare the model schema
-const userSchema = new mongoose.Schema({
+const userSchemaDef: SchemaDef<User> = {
   email: {
     type: String,
     // Important! We want users to be unique
@@ -28,7 +30,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+};
+
+// Declare the model schema
+const userSchema = new Schema(userSchemaDef);
 
 // Define some public methods for our model
 class UserClass {
@@ -39,13 +44,13 @@ class UserClass {
 
   // Create a salt and hash from the password
   public setPassword(password: string) {
-    this.salt = crypto.randomBytes(16).toString("hex");
-    this.hash = crypto.pbkdf2Sync(password, this.salt, 100000, 512, "sha512").toString("hex");
+    this.salt = randomBytes(16).toString("hex");
+    this.hash = pbkdf2Sync(password, this.salt, 100000, 512, "sha512").toString("hex");
   }
 
   // Check if hashes match
   public isPasswordValid(password: string): boolean {
-    const hash = crypto.pbkdf2Sync(password, this.salt, 100000, 512, "sha512").toString("hex");
+    const hash = pbkdf2Sync(password, this.salt, 100000, 512, "sha512").toString("hex");
     return this.hash === hash;
   }
 
@@ -54,7 +59,7 @@ class UserClass {
     const expiry = new Date();
     expiry.setMinutes(expiry.getMinutes() + 30);
 
-    const token = jwt.sign({
+    const token = sign({
       _id: this._id,
       email: this.email,
       exp: Math.round(expiry.getTime() / 1000),
@@ -67,4 +72,4 @@ class UserClass {
 // Important! Don't forget to use loadClass so your new methods will be included in the model
 userSchema.loadClass(UserClass);
 
-export default mongoose.model<User>("User", userSchema);
+export default model<UserDoc>("User", userSchema);

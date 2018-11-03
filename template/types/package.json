@@ -1,0 +1,7 @@
+{
+  "name": "@types/app-shared-types",
+  "version": "1.0.0",
+  "description": "Shared types between backend and frontend",
+  "main": "index.d.ts",
+  "typeScriptVersion": "3"
+}

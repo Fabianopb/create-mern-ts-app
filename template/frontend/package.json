@@ -25,6 +25,7 @@
     "react-scripts-ts": "2.16.0"
   },
   "devDependencies": {
+    "@types/app-shared-types": "link:../types",
     "@types/axios": "^0.14.0",
     "@types/enzyme": "^3.1.13",
     "@types/enzyme-adapter-react-16": "^1.0.3",

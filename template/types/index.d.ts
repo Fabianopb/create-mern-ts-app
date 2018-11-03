@@ -1,4 +1,9 @@
 
 declare module App {
-  type Test = "right" | "left";
+
+  interface Item {
+    name: string;
+    value: number;
+  }
+
 }

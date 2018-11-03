@@ -1,13 +1,11 @@
 import * as mongoose from "mongoose";
 
 // Declare model interface
-interface Item extends mongoose.Document {
-  name: string;
-  value: number;
-}
+interface ItemDoc extends App.Item, mongoose.Document {}
 
-// Define model schema
-const itemSchema = new mongoose.Schema({
+type ItemSchemaDef = { [K in keyof App.Item]: mongoose.SchemaTypeOpts<any> };
+
+const itemSchemaDef: ItemSchemaDef = {
   name: {
     type: String,
     required: true
@@ -16,6 +14,9 @@ const itemSchema = new mongoose.Schema({
     type: Number,
     required: true
   }
-});
+};
 
-export default mongoose.model<Item>("Item", itemSchema);
+// Define model schema
+const itemSchema = new mongoose.Schema(itemSchemaDef);
+
+export default mongoose.model<ItemDoc>("Item", itemSchema);

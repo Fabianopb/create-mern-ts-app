@@ -2,18 +2,21 @@ import * as crypto from "crypto";
 import * as jwt from "jsonwebtoken";
 import * as mongoose from "mongoose";
 
-// Declare the model interface
-interface User extends mongoose.Document {
+interface User {
   email: string;
   hash: string;
   salt: string;
+}
+// Declare the model interface
+interface UserDoc extends User, mongoose.Document {
   setPassword(password: string): void;
   isPasswordValid(password: string): boolean;
   generateJwt(): { token: string; expiry: Date };
 }
 
-// Declare the model schema
-const userSchema = new mongoose.Schema({
+type UserSchemaDef = { [K in keyof User]: mongoose.SchemaTypeOpts<any> };
+
+const userSchemaDef: UserSchemaDef = {
   email: {
     type: String,
     // Important! We want users to be unique
@@ -28,7 +31,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+};
+
+// Declare the model schema
+const userSchema = new mongoose.Schema(userSchemaDef);
 
 // Define some public methods for our model
 class UserClass {
@@ -67,4 +73,4 @@ class UserClass {
 // Important! Don't forget to use loadClass so your new methods will be included in the model
 userSchema.loadClass(UserClass);
 
-export default mongoose.model<User>("User", userSchema);
+export default mongoose.model<UserDoc>("User", userSchema);

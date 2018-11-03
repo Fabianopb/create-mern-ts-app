@@ -1,7 +1,7 @@
 {
   "name": "create-mern-ts-app",
   "bin": "./create-mern-ts-app.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "engines": {
     "node": ">=8",
@@ -21,6 +21,6 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "scripts": {
-    "create-sample": "node create-mern-ts-app.js sample-app"   
+    "create-sample": "node create-mern-ts-app.js sample-app"
   }
 }

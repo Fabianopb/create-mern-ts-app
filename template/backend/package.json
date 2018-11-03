@@ -21,6 +21,7 @@
     ],
     "collectCoverageFrom": [
       "**/*.ts",
+      "!**/*.d.ts",
       "!server/server.ts",
       "!server/app.ts"
     ]
@@ -48,8 +49,8 @@
     "ts-jest": "^21.2.4",
     "ts-loader": "^3.2.0",
     "ts-node": "^3.2.0",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
     "webpack": "^3.9.1"
   },
   "dependencies": {

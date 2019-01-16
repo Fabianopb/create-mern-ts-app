@@ -1,5 +1,7 @@
 # create-mern-ts-app
 
+![](https://img.shields.io/travis/com/Fabianopb/create-mern-ts-app.svg)
+
 Create a Mongo-Express-React-Node Application written in TypeScript out of the box.
 
 Generate your app

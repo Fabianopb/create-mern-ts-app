@@ -23,7 +23,8 @@
       "**/*.ts",
       "!**/*.d.ts",
       "!server/server.ts",
-      "!server/app.ts"
+      "!server/app.ts",
+      "!scripts/*"
     ]
   },
   "devDependencies": {

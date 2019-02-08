@@ -1,7 +1,7 @@
 {
   "name": "create-mern-ts-app",
   "bin": "./create-mern-ts-app.js",
-  "version": "1.1.2-0",
+  "version": "1.2.0",
   "license": "MIT",
   "engines": {
     "node": ">=8",

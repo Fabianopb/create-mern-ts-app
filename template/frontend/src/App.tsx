@@ -1,8 +1,8 @@
 import axios from "axios";
-import * as React from 'react';
-import './App.css';
-import * as session from './session';
-import logo from './logo.svg';
+import * as React from "react";
+import "./App.css";
+import logo from "./logo.svg";
+import * as session from "./session";
 
 export interface AppState {
   email: string;
@@ -82,12 +82,12 @@ class App extends React.Component<{}, AppState> {
     } finally {
       this.setState({ isRequesting: false });
     }
-  };
+  }
 
   private logout = (): void => {
     session.clearSession();
     this.setState({ isLoggedIn: false });
-  };
+  }
 
   private getTestData = async (): Promise<void> => {
     try {

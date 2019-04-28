@@ -23,29 +23,29 @@
   ],
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^3.0.0"
   },
   "devDependencies": {
     "@types/app-shared-types": "link:../types",
     "@types/enzyme": "^3.1.17",
     "@types/enzyme-adapter-react-16": "^1.0.4",
-    "@types/jest": "24.0.6",
-    "@types/node": "11.9.4",
-    "@types/react": "16.8.4",
-    "@types/react-dom": "16.8.2",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.8",
+    "@types/react": "^16.8.14",
+    "@types/react-dom": "^16.8.4",
     "axios-mock-adapter": "^1.16.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "jest-localstorage-mock": "^2.4.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postinstall": "yarn build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll=false",
     "test:watch": "react-scripts test --coverage --watchAll"
   }
 }

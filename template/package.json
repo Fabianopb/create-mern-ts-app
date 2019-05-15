@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "8.x",
-    "yarn": "1.x"
+    "node": ">=8",
+    "yarn": ">=1"
   },
   "scripts": {
     "install": "yarn install:backend && yarn install:frontend",

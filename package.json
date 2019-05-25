@@ -26,7 +26,7 @@
     "rimraf": "^2.6.3"
   },
   "scripts": {
-    "create-sample": "rm -rf sample-app && node create-mern-ts-app.js sample-app",
+    "create-sample": "rm -rf sample-app && node src/create-mern-ts-app.js sample-app",
     "test": "jest",
     "e2e": "node e2e.js"
   }

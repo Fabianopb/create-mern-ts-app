@@ -9,5 +9,5 @@ const cp = require('child_process');
   cp.execSync('yarn lint', { cwd: 'sample-app', stdio: 'inherit' });
   cp.execSync('yarn test', { cwd: 'sample-app', stdio: 'inherit' });
   console.log(chalk.cyan('cleaning sample...'));
-  cp.execSync('rimraf sample-app', { stdio: 'inherit' });
+  cp.execSync('yarn clean', { stdio: 'inherit' });
 })();

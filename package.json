@@ -28,6 +28,7 @@
   "scripts": {
     "create-sample": "rm -rf sample-app && node src/create-mern-ts-app.js sample-app",
     "test": "jest",
-    "e2e": "node e2e.js"
+    "e2e": "node e2e.js",
+    "clean": "rimraf sample-app"
   }
 }

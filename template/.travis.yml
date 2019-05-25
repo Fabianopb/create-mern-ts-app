@@ -8,5 +8,5 @@ services:
 env:
   - AUTH_SHARED_SECRET=auth-shared-secret
 script:
-  - npm test
-  - npm run coveralls
+  - yarn lint
+  - yarn test

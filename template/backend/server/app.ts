@@ -20,7 +20,7 @@ app.use("/api/users", usersController);
 app.use(express.static(path.resolve("..", "frontend", "build")));
 
 // Intercept requests to return the frontend's static entry point
-app.get("*", (request, response) => {
+app.get("*", (_, response) => {
   response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
 });
 

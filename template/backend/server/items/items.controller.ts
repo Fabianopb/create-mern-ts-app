@@ -5,7 +5,7 @@ import Item from "./item.model";
 
 const router = express.Router();
 
-router.route("/").get(authorize, async (request, response) => {
+router.route("/").get(authorize, async (_, response) => {
   const items = await Item.find();
   return response.status(200).json(items);
 });

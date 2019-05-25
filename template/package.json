@@ -17,12 +17,16 @@
     "start:db": "sudo mongod --dbpath /data/test/ --port 27017",
     "start:backend": "cd backend && yarn start",
     "start:frontend": "cd frontend && yarn start",
+    "lint": "yarn lint:backend && yarn lint:frontend",
+    "lint:backend": "cd backend && yarn lint",
+    "lint:frontend": "cd frontend && yarn lint",
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
     "serve": "cd backend && node build/server.js"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "tslint": "^5.16.0"
   }
 }

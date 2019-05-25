@@ -2,12 +2,6 @@
   "name": "express-backend",
   "version": "0.1.0",
   "main": "./build/server.js",
-  "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "test": "jest --coverage --colors",
-    "test:watch": "jest --coverage --colors --watchAll",
-    "start": "webpack --watch"
-  },
   "jest": {
     "moduleFileExtensions": [
       "ts",
@@ -26,6 +20,17 @@
       "!server/app.ts",
       "!scripts/*"
     ]
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@types/app-shared-types": "link:../types",
@@ -54,15 +59,11 @@
     "typescript": "^3.1.6",
     "webpack": "^3.9.1"
   },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "dotenv": "^4.0.0",
-    "express": "^4.16.2",
-    "express-jwt": "^5.3.1",
-    "jsonwebtoken": "^8.3.0",
-    "lodash": "^4.17.10",
-    "mongoose": "^5.2.4",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --config webpack.config.js",
+    "lint": "tslint -c tslint.json -p ./tsconfig.json",
+    "test": "jest --coverage --colors",
+    "test:watch": "jest --coverage --colors --watchAll"
   }
 }

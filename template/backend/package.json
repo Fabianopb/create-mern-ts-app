@@ -62,7 +62,7 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack --config webpack.config.js",
-    "lint": "tslint -c tslint.json -p ./tsconfig.json",
+    "lint": "tslint -c ../tslint.json -p ./tsconfig.json",
     "test": "jest --coverage --colors",
     "test:watch": "jest --coverage --colors --watchAll"
   }

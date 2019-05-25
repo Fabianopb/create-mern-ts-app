@@ -21,5 +21,5 @@ export const isSessionValid = (): boolean => {
 
 // Creates the authorization header using the bearer token
 export const getAuthHeaders = () => ({
-  Authorization: `Bearer ${localStorage.getItem("token")}`
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
 });

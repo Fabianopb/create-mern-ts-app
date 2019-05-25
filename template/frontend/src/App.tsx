@@ -20,7 +20,7 @@ class App extends React.Component<{}, AppState> {
     isRequesting: false,
     isLoggedIn: false,
     data: [],
-    error: ""
+    error: "",
   };
 
   public componentDidMount() {
@@ -40,11 +40,19 @@ class App extends React.Component<{}, AppState> {
             <div>
               Server test data:
               <ul>
-                {this.state.data.map((item: App.Item, index) => <li key={index}>name: {item.name} / value: {item.value}</li>)}
+                {this.state.data.map((item: App.Item, index) => (
+                  <li key={index}>
+                    name: {item.name} / value: {item.value}
+                  </li>
+                ))}
               </ul>
             </div>
-            <button disabled={this.state.isRequesting} onClick={this.getTestData}>Get test data</button>
-            <button disabled={this.state.isRequesting} onClick={this.logout}>Log out</button>
+            <button disabled={this.state.isRequesting} onClick={this.getTestData}>
+              Get test data
+            </button>
+            <button disabled={this.state.isRequesting} onClick={this.logout}>
+              Log out
+            </button>
           </div>
         ) : (
           <div className="App-login">
@@ -61,7 +69,9 @@ class App extends React.Component<{}, AppState> {
               type="password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ password: e.target.value })}
             />
-            <button disabled={this.state.isRequesting} onClick={this.handleLogin}>Log in</button>
+            <button disabled={this.state.isRequesting} onClick={this.handleLogin}>
+              Log in
+            </button>
           </div>
         )}
       </div>
@@ -82,12 +92,12 @@ class App extends React.Component<{}, AppState> {
     } finally {
       this.setState({ isRequesting: false });
     }
-  }
+  };
 
   private logout = (): void => {
     clearSession();
     this.setState({ isLoggedIn: false });
-  }
+  };
 
   private getTestData = async (): Promise<void> => {
     try {
@@ -99,7 +109,7 @@ class App extends React.Component<{}, AppState> {
     } finally {
       this.setState({ isRequesting: false });
     }
-  }
+  };
 }
 
 export default App;

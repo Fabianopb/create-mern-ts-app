@@ -37,7 +37,7 @@ const userSchema = new Schema(userSchemaDef);
 
 // Define some public methods for our model
 class UserClass {
-  private _id: string;
+  private id: string;
   private email: string;
   private salt: string;
   private hash: string;
@@ -60,7 +60,7 @@ class UserClass {
     expiry.setMinutes(expiry.getMinutes() + 30);
 
     const token = sign({
-      _id: this._id,
+      _id: this.id,
       email: this.email,
       exp: Math.round(expiry.getTime() / 1000),
     }, process.env.AUTH_SHARED_SECRET);

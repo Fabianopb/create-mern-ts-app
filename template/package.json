@@ -6,6 +6,27 @@
     "node": ">=8",
     "yarn": ">=1"
   },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "install": "yarn install:backend && yarn install:frontend",
     "install:backend": "cd backend && yarn install",
@@ -17,12 +38,12 @@
     "start:db": "sudo mongod --dbpath /data/test/ --port 27017",
     "start:backend": "cd backend && yarn start",
     "start:frontend": "cd frontend && yarn start",
+    "lint": "yarn lint:backend && yarn lint:frontend",
+    "lint:backend": "cd backend && yarn lint",
+    "lint:frontend": "cd frontend && yarn lint",
     "test": "yarn test:backend && yarn test:frontend",
     "test:backend": "cd backend && yarn test",
     "test:frontend": "cd frontend && yarn test",
     "serve": "cd backend && node build/server.js"
-  },
-  "devDependencies": {
-    "concurrently": "^4.0.1"
   }
 }

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const chalk = require('chalk');
 const cp = require('child_process');
 const fs = require('fs-extra');
@@ -38,7 +37,7 @@ function checkProjectName() {
 }
 
 function createProjectTemplate(projectName) {
-  const srcRoot = path.join(__dirname, 'template/');
+  const srcRoot = path.join(__dirname, '../template/');
   const destRoot = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destRoot + '\n'));

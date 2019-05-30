@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9000",
+  "engines": {
+    "node": "8.* || >= 10.*",
+    "yarn": ">=1",
+    "npm": ">=5"
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
@@ -25,7 +30,7 @@
     "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.0"
+    "react-scripts": "^3.0.1"
   },
   "devDependencies": {
     "@types/app-shared-types": "link:../types",

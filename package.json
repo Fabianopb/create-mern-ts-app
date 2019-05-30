@@ -5,7 +5,8 @@
   "license": "MIT",
   "engines": {
     "node": "8.* || >= 10.*",
-    "yarn": ">=1"
+    "yarn": ">=1",
+    "npm": ">=5"
   },
   "jest": {
     "testMatch": [
@@ -28,7 +29,7 @@
     "rimraf": "^2.6.3"
   },
   "scripts": {
-    "create-sample": "rm -rf sample-app && node src/create-mern-ts-app.js sample-app",
+    "create-sample": "rimraf sample-app && node src/create-mern-ts-app.js sample-app",
     "test": "jest",
     "e2e": "node e2e.js",
     "clean": "rimraf sample-app"

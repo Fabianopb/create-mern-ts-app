@@ -52,41 +52,20 @@ function generateEnvFile(projectName) {
   fs.writeFileSync(path.join(destRoot, 'backend', '.env'), `# This is an auto-generated file, change at your own will and risk.\n\n${envContents}`);
 }
 
-function shouldUseYarn() {
-  try {
-    cp.execSync('yarnpkg --version', { stdio: 'ignore' });
-    console.log(chalk.cyan('Yarn found, we\'ll try to use it to run scripts.'));
-    return true;
-  } catch (e) {
-    console.log(chalk.yellow('Yarn not found. Falling back to npm.'));
-    return false;
-  }
-}
-
-function checkYarnOrNpmVersion() {
+function checkYarnVersion() {
   const minReqYarnVersion = '1.5.0';
-  const minReqNpmVersion = '5.0.0';
-  const tryYarn = shouldUseYarn();
-  if (tryYarn) {
-    console.log(chalk.cyan('Checking yarn version...'));
+  console.log(chalk.cyan('Checking yarn version...'));
+  try {
     const yarnVersion = cp.execSync('yarnpkg --version').toString().trim();
     if (semver.gte(yarnVersion, minReqYarnVersion)) {
       console.log(chalk.cyan(`Using yarn ${yarnVersion}\n`));
-      return true;
     } else {
       console.log(chalk.yellow(`We require at least yarn ${minReqYarnVersion} and you are using ${yarnVersion}\n`));
+      throw new Error('Yarn not found');
     }
-  }
-  console.log(chalk.cyan('Checking npm version...'));
-  const npmVersion = cp.execSync('npm --version').toString().trim();
-  if (semver.gte(npmVersion, minReqNpmVersion)) {
-    console.log(chalk.cyan(`Using npm ${npmVersion}\n`));
-  } else {
-    console.log(chalk.red(`We require at least npm ${minReqNpmVersion} and you are using ${npmVersion}\n`));
-    console.log(chalk.red(`Make sure you have yarn >= ${minReqYarnVersion} or npm >= ${minReqNpmVersion} and try again.`));
+  } catch (e) {
     process.exit(1);
   }
-  return false;
 }
 
 function asyncSpawn(command, args, cwd) {
@@ -105,11 +84,11 @@ function asyncSpawn(command, args, cwd) {
 (async() => {
   try {
     checkNodeVersion();
+    checkYarnVersion();
     const projectName = checkProjectName();
-    const useYarn = checkYarnOrNpmVersion();
     createProjectTemplate(projectName);
     generateEnvFile(projectName);
-    await asyncSpawn(useYarn ? 'yarn' : 'npm', ['install'], projectName);
+    await asyncSpawn('yarn', ['install'], projectName);
   } catch (e) {
     console.log(chalk.red(e));
     process.exit(1);

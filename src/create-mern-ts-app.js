@@ -5,6 +5,16 @@ const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
 
+function useYarn() {
+  try {
+    cp.execSync('yarnpkg --version', { stdio: 'ignore' });
+    console.log(chalk.cyan('Yarn found! You\'re good to go!'));
+  } catch (e) {
+    console.log(chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'));
+    process.exit(1);
+  }
+}
+
 function checkProjectName() {
   const projectName = process.argv[2];
   if (!projectName) {
@@ -32,6 +42,7 @@ function generateEnvFile(projectName) {
 }
 
 try {
+  useYarn();
   const projectName = checkProjectName();
   createProjectTemplate(projectName);
   generateEnvFile(projectName);

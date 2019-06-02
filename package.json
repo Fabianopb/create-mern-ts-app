@@ -14,8 +14,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "fs-extra": "^7.0.0",
-    "semver": "^5.6.0"
+    "fs-extra": "^7.0.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

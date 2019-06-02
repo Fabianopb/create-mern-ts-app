@@ -5,8 +5,7 @@
   "proxy": "http://localhost:9000",
   "engines": {
     "node": "8.* || >= 10.*",
-    "yarn": ">=1",
-    "npm": ">=5"
+    "yarn": ">=1"
   },
   "jest": {
     "collectCoverageFrom": [

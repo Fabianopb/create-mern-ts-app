@@ -3,27 +3,16 @@ const chalk = require('chalk');
 const cp = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
-const semver = require('semver');
 const crypto = require('crypto');
 
-function checkNodeVersion() {
-  const currentNodeVersion = process.versions.node;
-  const currentNodeMajor = parseInt(currentNodeVersion.split('.')[0], 10);
-  const requiredNodeMajor = 8;
-
-  if (currentNodeMajor < requiredNodeMajor) {
-    console.log(
-      chalk.red(
-        'You are running Node ' +
-          currentNodeVersion +
-          '.\n' +
-          `Create MERN TS App requires Node ${requiredNodeMajor} or higher.\n` +
-          'Please update your version of Node.\n'
-      )
-    );
+function useYarn() {
+  try {
+    cp.execSync('yarnpkg --version', { stdio: 'ignore' });
+    console.log(chalk.cyan('Yarn found! You\'re good to go!'));
+  } catch (e) {
+    console.log(chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'));
     process.exit(1);
   }
-  console.log(chalk.green(`Node ${currentNodeVersion} found, you're good to go!\n`));
 }
 
 function checkProjectName() {
@@ -52,66 +41,13 @@ function generateEnvFile(projectName) {
   fs.writeFileSync(path.join(destRoot, 'backend', '.env'), `# This is an auto-generated file, change at your own will and risk.\n\n${envContents}`);
 }
 
-function shouldUseYarn() {
-  try {
-    cp.execSync('yarnpkg --version', { stdio: 'ignore' });
-    console.log(chalk.cyan('Yarn found, we\'ll try to use it to run scripts.'));
-    return true;
-  } catch (e) {
-    console.log(chalk.yellow('Yarn not found. Falling back to npm.'));
-    return false;
-  }
+try {
+  useYarn();
+  const projectName = checkProjectName();
+  createProjectTemplate(projectName);
+  generateEnvFile(projectName);
+  cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+} catch (e) {
+  console.log(chalk.red(e));
+  process.exit(1);
 }
-
-function checkYarnOrNpmVersion() {
-  const minReqYarnVersion = '1.5.0';
-  const minReqNpmVersion = '5.0.0';
-  const tryYarn = shouldUseYarn();
-  if (tryYarn) {
-    console.log(chalk.cyan('Checking yarn version...'));
-    const yarnVersion = cp.execSync('yarnpkg --version').toString().trim();
-    if (semver.gte(yarnVersion, minReqYarnVersion)) {
-      console.log(chalk.cyan(`Using yarn ${yarnVersion}\n`));
-      return true;
-    } else {
-      console.log(chalk.yellow(`We require at least yarn ${minReqYarnVersion} and you are using ${yarnVersion}\n`));
-    }
-  }
-  console.log(chalk.cyan('Checking npm version...'));
-  const npmVersion = cp.execSync('npm --version').toString().trim();
-  if (semver.gte(npmVersion, minReqNpmVersion)) {
-    console.log(chalk.cyan(`Using npm ${npmVersion}\n`));
-  } else {
-    console.log(chalk.red(`We require at least npm ${minReqNpmVersion} and you are using ${npmVersion}\n`));
-    console.log(chalk.red(`Make sure you have yarn >= ${minReqYarnVersion} or npm >= ${minReqNpmVersion} and try again.`));
-    process.exit(1);
-  }
-  return false;
-}
-
-function asyncSpawn(command, args, cwd) {
-  return new Promise((resolve, reject) => {
-    const child = cp.spawn(command, [...args], { cwd, stdio: 'inherit' });
-    child.on('close', code => {
-      if (code !== 0) {
-        reject(new Error('Something went wrong...'));
-        return;
-      }
-      resolve();
-    });
-  });
-}
-
-(async() => {
-  try {
-    checkNodeVersion();
-    const projectName = checkProjectName();
-    const useYarn = checkYarnOrNpmVersion();
-    createProjectTemplate(projectName);
-    generateEnvFile(projectName);
-    await asyncSpawn(useYarn ? 'yarn' : 'npm', ['install'], projectName);
-  } catch (e) {
-    console.log(chalk.red(e));
-    process.exit(1);
-  }
-})();

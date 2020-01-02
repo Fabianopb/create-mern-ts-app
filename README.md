@@ -1,3 +1,11 @@
+# Project deprecated
+
+This project will be **no longer maintained** and is now replaced for a much stronger and leaner generator for Fullstack applications in React. Please check:
+
+* [create-fullstack-react-app](https://github.com/Fabianopb/create-fullstack-react-app)
+
+_______
+
 # create-mern-ts-app
 
 ![](https://img.shields.io/npm/v/create-mern-ts-app.svg) ![](https://img.shields.io/travis/com/Fabianopb/create-mern-ts-app.svg) ![](https://img.shields.io/npm/dt/create-mern-ts-app.svg) ![](https://img.shields.io/github/license/Fabianopb/create-mern-ts-app.svg)
